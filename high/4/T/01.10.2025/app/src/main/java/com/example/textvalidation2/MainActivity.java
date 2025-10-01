@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
             boolean hasLower = false;
             boolean hasUpper = false;
+            boolean hasDigit = false;
 
             for(int i = 0; i < len; i++) {
                 char ch = text.charAt(i);
@@ -114,10 +115,18 @@ public class MainActivity extends AppCompatActivity {
                 if(Character.isLowerCase(ch)) {
                     hasLower = true;
                 }
+
+                if(Character.isDigit(ch)) {
+                    hasDigit = true;
+                }
             }
 
             if(!hasLower || !hasUpper) {
                 return "Hasło musi zawierac duże i małe litery";
+            }
+
+            if(!hasDigit) {
+                return "Hasło musi zawierać cyfry";
             }
 
             return "";
