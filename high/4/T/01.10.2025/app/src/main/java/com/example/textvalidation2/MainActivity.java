@@ -62,8 +62,19 @@ public class MainActivity extends AppCompatActivity {
                 return "Adres e-mail nie może być pusty";
             }
 
+            boolean wasDot = false;
+
             for(int i = 0; i < len; i++) {
                 char ch = text.charAt(i);
+                boolean isDot = ch == '.';
+
+                if(isDot && wasDot) {
+                    return "'.' nie moga się powtarzać";
+                }
+
+                if(isDot && (i == 0 || i == len - i )) {
+                    return "'.' nie może być na końcu ani początku";
+                }
 
                 if(ch == '@') {
                     if(hasAt) {
@@ -72,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
                     hasAt = true;
                 }
+
+                wasDot = isDot;
             }
 
             if(!hasAt) {
