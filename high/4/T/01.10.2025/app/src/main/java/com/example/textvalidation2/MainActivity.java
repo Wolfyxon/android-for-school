@@ -28,8 +28,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         regInput(findViewById(R.id.nameInp), findViewById(R.id.nameErr), (text) -> {
-            if(text.isEmpty()) {
-                return "Imię nie może być puste";
+            int len = text.length();
+
+            for(int i = 0; i < len; i++) {
+                char ch = text.charAt(i);
+                boolean isUpper = Character.isUpperCase(ch);
+
+                if(!Character.isAlphabetic(ch)) {
+                    return "Imię może zawierać tylko litery";
+                }
+
+                if(i == 0 && !isUpper) {
+                    return "Pierwsza litera musi być duża";
+                }
+
+                if(i != 0 && isUpper) {
+                    return "Tylko pierwsza litera może być duża";
+                }
             }
 
             if(!Character.isUpperCase(text.charAt(0))) {
