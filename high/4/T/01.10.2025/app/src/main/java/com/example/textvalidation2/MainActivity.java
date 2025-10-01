@@ -5,17 +5,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-
     @FunctionalInterface
     interface InputValidatorHandler {
         String validate(String text);
@@ -152,5 +145,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
