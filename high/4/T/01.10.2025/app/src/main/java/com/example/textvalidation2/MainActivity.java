@@ -8,11 +8,16 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
     @FunctionalInterface
     interface InputValidatorHandler {
         String validate(String text);
     }
+
+    HashMap<EditText, Boolean> validStates = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
         regInput(findViewById(R.id.nameInp), findViewById(R.id.nameErr), (text) -> {
             int len = text.length();
+
+            if(len == 0) {
+                return "Imię nie może być puste";
+            }
 
             for(int i = 0; i < len; i++) {
                 char ch = text.charAt(i);
@@ -124,16 +133,44 @@ public class MainActivity extends AppCompatActivity {
 
             return "";
         });
+
+        updateButton();
     }
 
     boolean validate(EditText input, TextView errorLabel, InputValidatorHandler handler) {
         String error = handler.validate(input.getText().toString());
         errorLabel.setText(error);
 
-        return error.isEmpty();
+        boolean ok = error.isEmpty();
+        validStates.put(input, ok);
+
+        return ok;
+    }
+
+    boolean validateSilent(EditText input, InputValidatorHandler handler) {
+        boolean ok = handler.validate(input.getText().toString()).isEmpty();
+        validStates.put(input, ok);
+
+        return ok;
+    }
+
+    boolean areAllValid() {
+        for(Map.Entry<EditText, Boolean> entry : validStates.entrySet()) {
+            if(!entry.getValue()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    void updateButton() {
+        findViewById(R.id.btn).setEnabled(areAllValid());
     }
 
     void regInput(EditText input, TextView errorLabel, InputValidatorHandler handler) {
+        validateSilent(input, handler);
+
         input.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable editable) {}
@@ -142,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 validate(input, errorLabel, handler);
+                updateButton();
             }
         });
     }
