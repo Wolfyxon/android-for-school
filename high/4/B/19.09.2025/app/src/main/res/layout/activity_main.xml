@@ -54,16 +54,19 @@
                 android:textColorHint="#000080"
                 android:inputType="number"
                 android:padding="5dp"
+                android:id="@+id/washingInp"
                 android:hint="Podaj nr prania 1..12"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:theme="@style/btn"
+                android:id="@+id/btnConfirmWash"
                 android:text="Zatwierdź"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/washingStatus"
                 android:text="Numer prania: nie podano"/>
         </LinearLayout>
     </LinearLayout>
@@ -93,14 +96,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:theme="@style/btn"
+                android:id="@+id/btnTurnCleaner"
                 android:text="Włącz"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/cleanerPower"
                 android:text="Odkurzacz: wyłączony"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/cleanerStatus"
                 android:text="Status: nienaładowany"/>
         </LinearLayout>
     </LinearLayout>
