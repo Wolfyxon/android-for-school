@@ -1,4 +1,4 @@
-package com.wolfyxon.myapplication;
+package com.example.myapplication;
 
 import org.junit.Test;
 
