@@ -35,7 +35,8 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="[]"/>
+            android:entries="[]"
+            android:id="@+id/speciesList"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +46,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ile ma lat? 0"/>
+                android:text="Ile ma lat? 0"
+                android:id="@+id/ageLabel"/>
 
             <SeekBar
                 android:layout_width="wrap_content"
@@ -64,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="time"
-            android:hint="Cel wizyty"
+            android:hint="Czas wizyty"
             android:text="16:00"
             android:id="@+id/timeInput"/>
         <Button
