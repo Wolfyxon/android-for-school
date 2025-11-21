@@ -35,7 +35,7 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="[]"
+            android:entries="@android:id/empty"
             android:id="@+id/speciesList"/>
 
         <LinearLayout
