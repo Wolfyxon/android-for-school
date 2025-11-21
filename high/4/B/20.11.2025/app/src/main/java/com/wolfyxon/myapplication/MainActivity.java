@@ -16,14 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-    static final String[] SPECIES = {
-            "Pies",
-            "Kot",
-            "Świnka morska"
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ageMap.put("Kot", 20);
         ageMap.put("Świnka morska", 9);
 
-        String[] speciesArray = (String[]) ageMap.keySet().toArray();
+        String[] speciesArray = getStringKeys(ageMap);
 
         EditText nameInput = findViewById(R.id.nameInput);
         ListView speciesList = findViewById(R.id.speciesList);
@@ -84,5 +79,17 @@ public class MainActivity extends AppCompatActivity {
                     timeInput.getText()
             ));
         });
+    }
+
+    String[] getStringKeys(Map<String, Integer> map) {
+        Set<String> keySet = map.keySet();
+        String[] res = new String[keySet.size()];
+
+        int i = 0;
+        for(String key : keySet) {
+            res[i++] = key;
+        }
+
+        return res;
     }
 }
