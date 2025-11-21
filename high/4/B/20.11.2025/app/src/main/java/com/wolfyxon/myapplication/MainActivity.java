@@ -1,5 +1,7 @@
 package com.wolfyxon.myapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -19,6 +21,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
+    int currentSpecies = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         speciesList.setOnItemClickListener((adapter, item, position, id) -> {
             TextView label = (TextView) item;
             int maxAge = ageMap.get(label.getText());
+            currentSpecies = position;
 
             ageSlider.setMax(maxAge);
         });
@@ -67,17 +72,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.submitBtn).setOnClickListener(l -> {
-            Toast t = new Toast(this);
-
-            t.setText(String.format(
+            AlertDialog alert = new AlertDialog.Builder(this)
+            .setTitle("Wizyta umówiona")
+            .setMessage(String.format(
                     "%s, %s, %s, %s, %s",
 
                     nameInput.getText(),
-                    ((TextView) speciesList.getSelectedItem()).getText(),
+                    speciesArray[currentSpecies],
                     ageSlider.getProgress(),
                     reasonInput.getText(),
                     timeInput.getText()
-            ));
+            )).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            }).create();
+
+            alert.show();
         });
     }
 
