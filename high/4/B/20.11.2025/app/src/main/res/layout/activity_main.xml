@@ -35,8 +35,10 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@android:id/empty"
-            android:id="@+id/speciesList"/>
+            android:id="@+id/speciesList">
+
+
+        </ListView>
 
         <LinearLayout
             android:layout_width="match_parent"
