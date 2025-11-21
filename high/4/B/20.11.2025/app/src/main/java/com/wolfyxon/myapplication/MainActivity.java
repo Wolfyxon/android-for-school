@@ -82,11 +82,8 @@ public class MainActivity extends AppCompatActivity {
                     ageSlider.getProgress(),
                     reasonInput.getText(),
                     timeInput.getText()
-            )).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
+            )).setPositiveButton("Ok", (dialog, which) -> {
+                        dialog.cancel();
             }).create();
 
             alert.show();
