@@ -3,6 +3,7 @@ package com.example.rating;
 import android.os.Bundle;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    RatingBar ratingBar;
+    TextView ratingText;
+    TextView clicksText;
+
+    int clicks = 0;
+
+    void updateRating() {
+        ratingText.setText("Twoja ocena: " + ratingBar.getRating());
+    }
+    void updateClicks() {
+        clicksText.setText("Kliknięcia: " + clicks);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +36,34 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        RatingBar ratingBar = findViewById(R.id.rating);
-        TextView ratingText = findViewById(R.id.ratingText);
+        ratingBar = findViewById(R.id.rating);
+        ratingText = findViewById(R.id.ratingText);
+        clicksText = findViewById(R.id.clicks);
 
         ratingBar.setOnRatingBarChangeListener((bar, value, fromUser) -> {
-            ratingText.setText("Twoja ocena: " + value);
+            updateRating();
+        });
+
+        findViewById(R.id.btnLike).setOnClickListener(l -> {
+            float rating = ratingBar.getRating();
+
+            clicks++;
+            updateClicks();
+
+            if(rating < 5) {
+                rating += 0.5F;
+
+                ratingBar.setRating(rating);
+            } else {
+                Toast.makeText(this, "Maksymalna ocena", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        findViewById(R.id.btnReset).setOnClickListener(l -> {
+            clicks = 0;
+            ratingBar.setRating(0);
+            updateClicks();
+            updateRating();
         });
     }
 }
