@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        colorLabel = findViewById(R.id.colorLabel);
+
         seekR = setupBar(findViewById(R.id.seekR));
         seekG = setupBar(findViewById(R.id.seekG));
         seekB = setupBar(findViewById(R.id.seekB));
