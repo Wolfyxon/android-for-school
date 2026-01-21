@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     SeekBar setupBar(SeekBar bar) {
+        bar.setMax(255);
         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
