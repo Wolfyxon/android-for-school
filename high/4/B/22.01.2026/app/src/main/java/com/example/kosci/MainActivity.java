@@ -1,6 +1,8 @@
 package com.example.kosci;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,5 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         diceList = findViewById(R.id.dies);
+    }
+
+    void addDice(int image) {
+        ImageView img = new ImageView(this);
+        img.setImageResource(image);
+
+        diceList.addView(img);
     }
 }
