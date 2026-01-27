@@ -47,9 +47,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void addDiceImg(int image) {
+        int margin = 5;
+
         ImageView img = new ImageView(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(70, ActionBar.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(margin, margin, margin, margin);
+
         img.setImageResource(image);
-        img.setLayoutParams(new LinearLayout.LayoutParams(80, ActionBar.LayoutParams.WRAP_CONTENT));
+        img.setLayoutParams(lp);
+
         diceList.addView(img);
     }
 }

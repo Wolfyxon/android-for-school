@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#ffffcc">
+        android:background="#F5F5DC">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#af0000"
+            android:layout_marginTop="5dp"
+            android:background="#A52A2A"
             android:textColor="#ffffff"
             android:padding="5dp"
             android:textSize="10pt"
@@ -26,42 +27,69 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#ff8800"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#D2691E"
             android:text="RZUĆ KOŚĆMI"
             android:id="@+id/btnThrow"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:background="#ffffff"
             android:gravity="center"
             android:id="@+id/dies">
 
             <ImageView
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/dice3"/>
+                android:src="@drawable/dice_unknown"
+                android:layout_margin="5dp"/>
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dice_unknown"
+                android:layout_margin="5dp"/>
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dice_unknown"
+                android:layout_margin="5dp"/>
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dice_unknown"
+                android:layout_margin="5dp"/>
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dice_unknown"
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:gravity="center"
-            android:text="Wynik tego losowania:"/>
+            android:text="Wynik tego losowania: 0"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:gravity="center"
-            android:text="Wynik gry:"/>
+            android:text="Wynik gry: 0"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#ff8800"
+            android:backgroundTint="#D2691E"
             android:text="RESETUJ WYNIK"
             android:id="@+id/btnReset"/>
 
