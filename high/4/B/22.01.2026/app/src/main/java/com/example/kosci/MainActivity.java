@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void reset() {
+        roundScore = 0;
+        gameScore = 0;
+
         setDiesUnknown();
         updateScoreText();
     }
