@@ -104,9 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
     void addDiceImg(int image) {
         int margin = 5;
+        float dp =  getResources().getDisplayMetrics().density;
 
         ImageView img = new ImageView(this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(70, ActionBar.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams((int) (70 * dp), ActionBar.LayoutParams.WRAP_CONTENT);
         lp.setMargins(margin, margin, margin, margin);
 
         img.setImageResource(image);
