@@ -77,12 +77,14 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center"
+            android:id="@+id/roundScore"
             android:text="Wynik tego losowania: 0"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center"
+            android:id="@+id/gameScore"
             android:text="Wynik gry: 0"/>
 
         <Button
