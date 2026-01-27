@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btnThrow).setOnClickListener(l -> {
-
+            throwDies();
         });
     }
 
