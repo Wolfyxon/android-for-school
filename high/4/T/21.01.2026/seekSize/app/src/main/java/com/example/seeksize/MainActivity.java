@@ -1,9 +1,9 @@
 package com.example.seeksize;
 
 import android.os.Bundle;
-import android.util.TypedValue;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,13 +24,20 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        TextView label = findViewById(R.id.label);
+        ImageView img = findViewById(R.id.img);
         SeekBar bar = findViewById(R.id.seek);
 
         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                label.setTextSize(TypedValue.COMPLEX_UNIT_SP, seekBar.getProgress());
+                int dp = (int) getResources().getDisplayMetrics().density;
+
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        seekBar.getProgress() * dp,
+                        300 * dp
+                );
+
+                img.setLayoutParams(lp);
             }
 
             @Override
