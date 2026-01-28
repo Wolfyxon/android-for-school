@@ -1,6 +1,7 @@
 package com.example.seeksize;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         seekBar.getProgress() * dp,
                         300 * dp
                 );
+                lp.gravity = Gravity.CENTER;
 
                 img.setLayoutParams(lp);
             }
