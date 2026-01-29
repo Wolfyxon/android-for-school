@@ -2,6 +2,7 @@ package com.example.kosci;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -60,19 +62,29 @@ public class MainActivity extends AppCompatActivity {
     void throwDies() {
         roundScore = 0;
 
-        int[] scores = new int[DICE_COUNT];
+        int[] diceValues = new int[DICE_COUNT];
+        HashMap<Integer, Integer> repeats = new HashMap<>();
+
         Random rng = new Random();
 
-        for(int i = 0; i < scores.length; i++) {
-            int n = rng.nextInt(1, DICE_IMGS.length + 1);
+        for(int i = 0; i < DICE_COUNT; i++) {
+            int dice = 1 + rng.nextInt(DICE_IMGS.length);
 
-            roundScore += n;
-            gameScore += n;
-
-            scores[i] = n;
+            repeats.merge(dice, 1, Integer::sum);
+            diceValues[i] = dice;
         }
 
-        setDies(scores);
+        for(Integer dice : repeats.keySet()) {
+            Integer repeatCount = repeats.get(dice);
+
+            if(repeatCount > 1) {
+                roundScore += dice * repeatCount;
+            }
+        }
+
+        gameScore += roundScore;
+
+        setDies(diceValues);
         updateScoreText();
     }
 
