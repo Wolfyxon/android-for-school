@@ -1,5 +1,6 @@
 package com.example.seekthing;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -37,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         label = findViewById(R.id.label);
         sizeSlider = findViewById(R.id.size_slider);
 
-        addColor("Czarny", 0x000000);
-        addColor("Niebieski", 0x0000FF);
-        addColor("Czerwony", 0xFF0000);
-        addColor("Zielony", 0x00FF00);
+        addColor("Czarny", Color.BLACK);
+        addColor("Niebieski", Color.BLUE);
+        addColor("Czerwony", Color.RED);
+        addColor("Zielony", Color.GREEN);
 
         findViewById(R.id.btn_apply).setOnClickListener(l -> {
             label.setText(input.getText());
