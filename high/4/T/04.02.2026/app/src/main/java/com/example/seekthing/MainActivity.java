@@ -3,7 +3,6 @@ package com.example.seekthing;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
