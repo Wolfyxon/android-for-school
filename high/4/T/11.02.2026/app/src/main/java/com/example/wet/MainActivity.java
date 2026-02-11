@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    Specie selectedSpecie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +63,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.specie_entry, specieNames);
         speciesList.setAdapter(adapter);
 
-        speciesList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Specie s = species[i];
-                seekAge.setMax(s.maxAge);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+        speciesList.setOnItemClickListener((adapterView, view, i, l) -> {
+            Specie s = species[i];
+            seekAge.setMax(s.maxAge);
+            selectedSpecie = s;
         });
 
         seekAge.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -86,11 +82,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btnSubmit).setOnClickListener(l -> {
-            TextView selected = (TextView) speciesList.getSelectedItem();
-
             String[] components = {
                     inpName.getText().toString(),
-                    selected != null ? selected.getText().toString() : "Nieznany",
+                    selectedSpecie != null ? selectedSpecie.name : "Nieznany",
                     String.valueOf(seekAge.getProgress()),
                     inpTime.getText().toString()
             };
