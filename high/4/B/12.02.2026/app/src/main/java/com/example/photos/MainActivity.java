@@ -9,6 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     );
 
     ImageView postImg;
+    MaterialButton btnLike;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         postImg = findViewById(R.id.postImg);
+        btnLike = findViewById(R.id.btnLike);
 
         findViewById(R.id.btnPrev).setOnClickListener(l -> {
             offsetPostIdx(-1);
@@ -77,11 +81,27 @@ public class MainActivity extends AppCompatActivity {
            offsetPostIdx(1);
         });
 
+        btnLike.setOnClickListener(l -> {
+            Post post = getCurrentPost();
+
+            if(post == null) {
+                return;
+            }
+
+            post.toggleLike();
+            setPost(post);
+        });
+
         setPostIdx(currentPostIdx);
     }
 
     void setPost(Post post) {
         postImg.setImageResource(post.getImageResId());
+        btnLike.setText(String.valueOf(post.getLikes()));
+    }
+
+    Post getCurrentPost() {
+        return posts.get(currentPostIdx);
     }
 
     void setPostIdx(int i) {
