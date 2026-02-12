@@ -1,6 +1,7 @@
 package com.example.photos;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    int currentPostIdx = 0;
     List<Post> posts = List.of(
             new Post(R.drawable.cat_glow, 3),
             new Post(R.drawable.catfish, 10),
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             new Post(R.drawable.cat_device, 2)
     );
 
-    int currentPostIdx = 0;
+    ImageView postImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,35 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        postImg = findViewById(R.id.postImg);
+
+        findViewById(R.id.btnPrev).setOnClickListener(l -> {
+            offsetPostIdx(-1);
+        });
+
+        findViewById(R.id.btnNext).setOnClickListener(l -> {
+           offsetPostIdx(1);
+        });
+
+        setPostIdx(currentPostIdx);
     }
 
+    void setPost(Post post) {
+        postImg.setImageResource(post.getImageResId());
+    }
 
+    void setPostIdx(int i) {
+        if(i >= 0 && i < posts.size() - 1) {
+            currentPostIdx = i;
+            setPost(posts.get(i));
+        }
+    }
+
+    void offsetPostIdx(int offset) {
+        int i = currentPostIdx + offset;
+        int len = posts.size();
+
+        setPostIdx(((i % len) + len) % len);
+    }
 }
