@@ -98,6 +98,12 @@ public class MainActivity extends AppCompatActivity {
     void setPost(Post post) {
         postImg.setImageResource(post.getImageResId());
         btnLike.setText(String.valueOf(post.getLikes()));
+
+        if(post.isLiked()) {
+            btnLike.setIconResource(R.drawable.heart_filled);
+        } else {
+            btnLike.setIconResource(R.drawable.heart_empty);
+        }
     }
 
     Post getCurrentPost() {
