@@ -11,6 +11,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,11 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     int currentPostIdx = 0;
-    List<Post> posts = List.of(
-            new Post(R.drawable.cat_glow, 3),
-            new Post(R.drawable.catfish, 10),
-            new Post(R.drawable.cat_boom, 12),
-            new Post(R.drawable.cat_device, 2)
+    ArrayList<Post> posts = new ArrayList<Post>(
+            Arrays.asList(
+                    new Post(R.drawable.cat_glow, 3),
+                    new Post(R.drawable.catfish, 10),
+                    new Post(R.drawable.cat_boom, 12),
+                    new Post(R.drawable.cat_device, 2)
+            )
     );
 
     ImageView postImg;
@@ -79,6 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btnNext).setOnClickListener(l -> {
            offsetPostIdx(1);
+        });
+
+        findViewById(R.id.btnDelete).setOnClickListener(l -> {
+            if(!posts.isEmpty()) {
+                posts.remove(posts.get(currentPostIdx));
+                offsetPostIdx(0);
+            }
         });
 
         btnLike.setOnClickListener(l -> {
@@ -120,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
     void offsetPostIdx(int offset) {
         int i = currentPostIdx + offset;
         int len = posts.size();
+
+        if(len == 0) {
+            return;
+        }
 
         setPostIdx(((i % len) + len) % len);
     }
