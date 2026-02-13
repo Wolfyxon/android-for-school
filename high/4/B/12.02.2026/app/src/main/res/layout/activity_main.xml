@@ -55,7 +55,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnDelete"
-                app:icon="@drawable/delete"/>
+                app:icon="@drawable/delete"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart"/>
 
         </LinearLayout>
 
