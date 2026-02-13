@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void setPostIdx(int i) {
-        if(i >= 0 && i < posts.size() - 1) {
+        if(i >= 0 && i < posts.size()) {
             currentPostIdx = i;
             setPost(posts.get(i));
         }
