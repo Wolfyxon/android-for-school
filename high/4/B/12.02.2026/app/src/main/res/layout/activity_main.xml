@@ -17,25 +17,23 @@
             android:layout_height="300dp">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:text="&lt;"
                 android:id="@+id/btnPrev"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:src="@drawable/cat_wah"
                 android:id="@+id/postImg"/>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:text="&gt;"
                 android:id="@+id/btnNext"/>
         </LinearLayout>
