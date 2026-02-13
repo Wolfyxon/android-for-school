@@ -20,7 +20,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="&lt;"
+                android:background="@drawable/prev"
                 android:id="@+id/btnPrev"/>
 
             <ImageView
@@ -34,7 +34,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="&gt;"
+                android:background="@drawable/neck"
                 android:id="@+id/btnNext"/>
         </LinearLayout>
         
