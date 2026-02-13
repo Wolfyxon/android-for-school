@@ -21,7 +21,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="<"
+                android:text="&lt;"
                 android:id="@+id/btnPrev"/>
 
             <ImageView
@@ -36,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text=">"
+                android:text="&gt;"
                 android:id="@+id/btnNext"/>
         </LinearLayout>
         
